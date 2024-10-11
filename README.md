@@ -1,1 +1,1 @@
-https://englishlearning6klas.netlify.app/
+https://hangman-software-technologies.vercel.app/
