@@ -1,0 +1,139 @@
+.container {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 0 auto;
+    align-items: center;
+    padding: 1rem;
+    background-size: cover;
+    background-position: center;
+    z-index: 10;
+}
+
+.main-btn {
+    margin-inline: 10px;
+    padding: 5px 10px;
+    font-size: 1.4rem;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-btn:hover {
+    background-color: #e65c00;
+    /* Hover effect */
+}
+
+.score {
+    font-size: 1.6rem;
+    position: absolute;
+    margin-top: 80px;
+    margin-left: -200px;
+    color: #ff6600;
+}
+
+.level {
+    font-size: 1.6rem;
+    position: absolute;
+    margin-top: 120px;
+    margin-left: -200px;
+    color: #ff6600;
+}
+
+/* Hangman Body Parts */
+.hangman-head {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 10px solid #ff6600;
+    position: absolute;
+    top: 50px;
+    right: -30px;
+}
+
+.hangman-body {
+    width: 10px;
+    height: 100px;
+    background: #ff6600;
+    position: absolute;
+    top: 120px;
+    right: 0;
+}
+
+.hangman-right-arm {
+    width: 100px;
+    height: 10px;
+    background: #ff6600;
+    position: absolute;
+    top: 150px;
+    right: -100px;
+    rotate: -30deg;
+    transform-origin: left bottom;
+}
+
+.hangman-left-arm {
+    width: 100px;
+    height: 10px;
+    background: #ff6600;
+    position: absolute;
+    top: 150px;
+    right: 10px;
+    rotate: 30deg;
+    transform-origin: right bottom;
+}
+
+.hangman-right-leg {
+    width: 100px;
+    height: 10px;
+    background: #ff6600;
+    position: absolute;
+    top: 210px;
+    right: -90px;
+    rotate: 60deg;
+    transform-origin: left bottom;
+}
+
+.hangman-left-leg {
+    width: 100px;
+    height: 10px;
+    background: #ff6600;
+    position: absolute;
+    top: 210px;
+    right: 0;
+    rotate: -60deg;
+    transform-origin: right bottom;
+}
+
+/* Hangman Frame */
+.hangman-vertical-pole {
+    height: 50px;
+    width: 10px;
+    background: #ff6600;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.hangman-top-pole {
+    height: 10px;
+    width: 120px;
+    background: #ff6600;
+    margin-left: 120px;
+}
+
+.hangman-main-pole {
+    height: 300px;
+    width: 10px;
+    background: #ff6600;
+    margin-left: 120px;
+}
+
+.hangman-base {
+    height: 10px;
+    width: 250px;
+    background: #ff6600;
+}
