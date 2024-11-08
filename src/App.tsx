@@ -4,17 +4,18 @@ import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 import englishWords from "./wordList.json";
-import bulgarianWords from "./wordListBg.json";
 import { playWinSound, playLoseSound, playFinishSound, playFinishLevel1Sound, playFinishLevel2Sound } from "./utils/sounds";
 import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
 
 let bgWord = '';
 let randomIndex = 1;
+const entries = Object.entries(englishWords);
 function getWord() {
-  randomIndex = Math.floor(Math.random() * englishWords.length);
-  bgWord = bulgarianWords[randomIndex];
-  return englishWords[randomIndex];
+  randomIndex = Math.floor(Math.random() * entries.length);
+  let [key, value] = entries[randomIndex];
+  bgWord = value;
+  return key;
 }
 
 function App() {
