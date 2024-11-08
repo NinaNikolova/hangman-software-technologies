@@ -127,12 +127,7 @@ function App() {
         guessedLetters={guessedLetters}
         wordToGuess={wordToGuess}
       />
-      <div className="score">
-        <strong>Score: {score}</strong>
-      </div>
-      <div className="level">
-        <strong>Level: {level}</strong>
-      </div>
+    
       <div style={{ alignSelf: "stretch" }}>
         <Keyboard
           disabled={isWinner || isLoser}
