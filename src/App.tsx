@@ -9,17 +9,12 @@ import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
 import umlWords from "./wordList.json";
 import softwareTechWords from "./wordList1.json";
-
+type WordList = Record<string, string>;
 let bgWord = '';
 let randomIndex = 1;
-let wordList = umlWords;
+let wordList: WordList = umlWords;
 const entries = Object.entries(englishWords);
-function getWord() {
-  randomIndex = Math.floor(Math.random() * entries.length);
-  let [key, value] = entries[randomIndex];
-  bgWord = value;
-  return key;
-}
+
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState("uml");
