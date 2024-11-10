@@ -4,7 +4,6 @@ import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 import englishWords from "./wordList.json";
-import { playWinSound, playLoseSound, playFinishSound, playFinishLevel1Sound, playFinishLevel2Sound } from "./utils/sounds";
 import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
 import umlWords from "./wordList.json";
@@ -93,29 +92,8 @@ function App() {
 
   useEffect(() => {
     if (isWinner) {
-      setScore((prevScore) => prevScore + 1);
-      if (score === 20) {
-        setLevel(2);
-        playFinishLevel1Sound();
-        setTimeout(resetGame, 2000);
-      } else if (score === 40) {
-        setLevel(3);
-        playFinishLevel2Sound();
-        setTimeout(resetGame, 2000);
-      } else if (score === 60) {
-        playFinishSound();
-        setScore(0)
-        setLevel(1)
-        setTimeout(resetGame, 2000);
-      } else {
-        playWinSound();
-        setTimeout(resetGame, 2000);
-      }
-
-
+      setTimeout(resetGame, 2000);
     } else if (isLoser) {
-      playLoseSound();
-      setScore((prevScore) => prevScore - 1); // Decrease score
       setTimeout(resetGame, 2000);
     }
   }, [isWinner, isLoser]);
@@ -141,11 +119,22 @@ function App() {
         <option value="uml">UML</option>
         <option value="softwareTech">Software Technologies</option>
       </select>
+      {/* Display Emoji for Winner or Loser */}
+      <div style={{
+        fontSize: "2rem",
+        marginTop: "10px",
+        position: "fixed",
+        top: "10px",
+        right: "10px",
+      }}>
+        {isWinner && "👍"} {isLoser && "👎"}
+      </div>
       <div style={{ color: bgWordColor, fontSize: "1.4rem" }}>
         {wordToShow}
       </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
+
       <HangmanWord
         reveal={isLoser}
         guessedLetters={guessedLetters}
