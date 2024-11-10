@@ -7,9 +7,12 @@ import englishWords from "./wordList.json";
 import { playWinSound, playLoseSound, playFinishSound, playFinishLevel1Sound, playFinishLevel2Sound } from "./utils/sounds";
 import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
+import umlWords from "./wordList.json";
+import softwareTechWords from "./wordList1.json";
 
 let bgWord = '';
 let randomIndex = 1;
+let wordList = umlWords;
 const entries = Object.entries(englishWords);
 function getWord() {
   randomIndex = Math.floor(Math.random() * entries.length);
@@ -19,6 +22,7 @@ function getWord() {
 }
 
 function App() {
+  const [selectedTopic, setSelectedTopic] = useState("uml");
   const [wordToGuess, setWordToGuess] = useState(getWord);
   const [wordToShow, setWordToShow] = useState(bgWord);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
@@ -27,7 +31,27 @@ function App() {
   const [backgroundImage, setBackgroundImage] = useState(getRandomImage());
   const [level, setLevel] = useState(1);
 
-
+  function getWord() {
+    const entries = Object.entries(wordList); // Use wordList based on the selected topic
+    randomIndex = Math.floor(Math.random() * entries.length);
+    const [key, value] = entries[randomIndex];
+    bgWord = value;
+    return key;
+  }
+  const handleTopicChange = (event: any) => {
+    setSelectedTopic(event.target.value);
+    switch (event.target.value) {
+      case "uml":
+        wordList = umlWords;
+        break;
+      case "softwareTech":
+        wordList = softwareTechWords;
+        break;
+      default:
+        wordList = umlWords;
+    }
+    resetGame(); // Start with a new word when topic changes
+  };
   const incorrectLetters = guessedLetters.filter(
     letter => !wordToGuess.includes(letter)
   );
@@ -117,7 +141,12 @@ function App() {
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-      <div style={{ color: bgWordColor, fontSize: "1.6rem" }}>
+      {/* Dropdown to select topic */}
+      <select id="topicSelect" value={selectedTopic} onChange={handleTopicChange}>
+        <option value="uml">UML</option>
+        <option value="softwareTech">Software Technologies</option>
+      </select>
+      <div style={{ color: bgWordColor, fontSize: "1.4rem" }}>
         {wordToShow}
       </div>
 
@@ -127,7 +156,7 @@ function App() {
         guessedLetters={guessedLetters}
         wordToGuess={wordToGuess}
       />
-    
+
       <div style={{ alignSelf: "stretch" }}>
         <Keyboard
           disabled={isWinner || isLoser}
