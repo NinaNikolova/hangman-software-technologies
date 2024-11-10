@@ -3,16 +3,14 @@ import './App.css';
 import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
-import englishWords from "./wordList.json";
 import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
-import umlWords from "./wordList.json";
-import softwareTechWords from "./wordList1.json";
+import umlWords from "./wordList1.json";
+import softwareTechWords from "./wordList2.json";
 type WordList = Record<string, string>;
 let bgWord = '';
 let randomIndex = 1;
 let wordList: WordList = umlWords;
-const entries = Object.entries(englishWords);
 
 
 function App() {
