@@ -7,6 +7,8 @@ import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
 import umlWords from "./wordList1.json";
 import mss from "./wordList2.json";
+import ass from "./wordList3.json";
+import st from "./wordList4.json";
 
 type WordList = Record<string, string>;
 
@@ -48,6 +50,12 @@ function App() {
       case "mss":
         setWordList(mss);
         break;
+        case "ass":
+          setWordList(ass);
+          break;
+        case "st":
+          setWordList(st);
+          break;
       default:
         setWordList(umlWords);
     }
@@ -103,6 +111,8 @@ function App() {
       <select id="topicSelect" value={selectedTopic} onChange={handleTopicChange}>
         <option value="uml">UML</option>
         <option value="mss">МСС</option>
+        <option value="ass">ASS</option>
+        <option value="st">ST</option>
       </select>
 
       <div
