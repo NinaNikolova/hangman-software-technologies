@@ -9,12 +9,14 @@ import umlWords from "./wordList1.json";
 import mss from "./wordList2.json";
 import ass from "./wordList3.json";
 import st from "./wordList4.json";
+import py from "./wordList5.json";
+import dm from "./wordList6.json";
 
 type WordList = Record<string, string>;
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("uml");
-  const [wordList, setWordList] = useState<WordList>(umlWords);
+  const [selectedTopic, setSelectedTopic] = useState("dm");
+  const [wordList, setWordList] = useState<WordList>(dm);
   const [wordToGuess, setWordToGuess] = useState("");
   const [wordToShow, setWordToShow] = useState("");
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
@@ -44,6 +46,9 @@ function App() {
     setSelectedTopic(topic);
 
     switch (topic) {
+      case "dm":
+        setWordList(dm);
+        break;
       case "uml":
         setWordList(umlWords);
         break;
@@ -56,6 +61,9 @@ function App() {
         case "st":
           setWordList(st);
           break;
+          case "py":
+            setWordList(py);
+            break;
       default:
         setWordList(umlWords);
     }
@@ -109,10 +117,12 @@ function App() {
       }}
     >
       <select id="topicSelect" value={selectedTopic} onChange={handleTopicChange}>
+      <option value="dm">DM</option>
         <option value="uml">UML</option>
         <option value="mss">МСС</option>
         <option value="ass">ASS</option>
         <option value="st">ST</option>
+        <option value="py">Python</option>
       </select>
 
       <div
