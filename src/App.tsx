@@ -5,11 +5,9 @@ import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 import { getRandomImage } from "./utils/images";
 import { getRandomColor } from "./utils/colors";
-import umlWords from "./wordList1.json";
-import mss from "./wordList2.json";
-import ass from "./wordList3.json";
+
 import st from "./wordList4.json";
-import py from "./wordList5.json";
+
 import dm from "./wordList6.json";
 
 type WordList = Record<string, string>;
@@ -49,21 +47,9 @@ function App() {
       case "dm":
         setWordList(dm);
         break;
-      case "uml":
-        setWordList(umlWords);
-        break;
-      case "mss":
-        setWordList(mss);
-        break;
-        case "ass":
-          setWordList(ass);
-          break;
         case "st":
           setWordList(st);
           break;
-          case "py":
-            setWordList(py);
-            break;
       default:
         setWordList(umlWords);
     }
@@ -118,11 +104,8 @@ function App() {
     >
       <select id="topicSelect" value={selectedTopic} onChange={handleTopicChange}>
       <option value="dm">DM</option>
-        <option value="uml">UML</option>
-        <option value="mss">МСС</option>
-        <option value="ass">ASS</option>
         <option value="st">ST</option>
-        <option value="py">Python</option>
+
       </select>
 
       <div
