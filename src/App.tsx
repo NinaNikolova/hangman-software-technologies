@@ -51,7 +51,7 @@ function App() {
           setWordList(st);
           break;
       default:
-        setWordList(umlWords);
+        setWordList(dm);
     }
 
     resetGame();
